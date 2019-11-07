@@ -137,12 +137,6 @@ production.gzip = true;
 production.debug = false;
 ```
 
-To update:
-
-```javascript
-browserify.settings.production('cache', '7 days');
-```
-
 Development defaults:
 
 ```javascript
@@ -151,12 +145,6 @@ development.precompile = false;
 development.minify = false;
 development.gzip = false;
 development.debug = true;
-```
-
-To update:
-
-```javascript
-browserify.settings.development('gzip', true);
 ```
 
 The following defaults are the same for production and development:
@@ -170,31 +158,6 @@ insertGlobals = false;
 detectGlobals = true;
 standalone = false;
 grep = /\.js$/
-```
-
-To update:
-
-```javascript
-browserify.settings('external', ['hyperquest']);
-//or
-browserify.settings({
-  ignoreMissing: true,
-  insertGlobals: true,
-  transform: ['rfileify']
-});
-```
-
-Custom Environments:
-
-You can also create a new custom environment:
-
-```javascript
-var test = browserify.settings.env('test');
-test('minify', true);
-//or
-test({
-  debug: true
-});
 ```
 
 #### cache
