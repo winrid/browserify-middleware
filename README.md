@@ -1,8 +1,10 @@
 # browserify-middleware
 ## With Some Concurrency!
 
-This forked version of browserify-middleware uses a worker for the change detection, browserify, and uglify steps.
-This improves performance by a significant amount since everything is no longer done in a single thread. 
+This forked version of browserify-middleware uses a pool of workers for the change detection, browserify, and uglify steps.
+This improves performance by a significant amount since everything is no longer done in a single thread.
+
+The pool of workers is equal to the number of cpu cores on the system. 
 
 The API is exactly the same except that browserify.settings() no longer works. Instead it must be invoked from
 the worker by defining the path to a module that can set the settings for that worker.
