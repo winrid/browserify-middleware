@@ -1,9 +1,7 @@
 'use strict';
 
 var path = require('path');
-var normalize = path.normalize;
 var resolve = path.resolve;
-var dirname = path.dirname;
 var stat = require('fs').statSync;
 
 exports = module.exports = browserify;
@@ -14,7 +12,7 @@ function browserify(path, options) {
   path = resolve(path);
   options = exports.settings.normalize(options);
   options.noParse = options.noParse.map(function (path) {
-    if (path[0] != '.') return path; //support `['jquery']` as well as `['./src/jquery.js']`
+    if (path[0] !== '.') return path; //support `['jquery']` as well as `['./src/jquery.js']`
     return resolve(path);
   });
   if (stat(path).isDirectory()) {
