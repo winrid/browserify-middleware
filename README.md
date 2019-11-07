@@ -1,4 +1,31 @@
 # browserify-middleware
+## With Some Concurrency!
+
+This forked version of browserify-middleware uses a worker for the change detection, browserify, and uglify steps.
+This improves performance by a significant amount since everything is no longer done in a single thread. 
+
+The API is exactly the same except that browserify.settings() no longer works. Instead it must be invoked from
+the worker by defining the path to a module that can set the settings for that worker.
+
+For example:
+```javascript
+browserifySettings.settingsModulePath = path.join(__dirname, '../scripts/browserify-settings');
+```
+
+And then browserify-settings should export a function which takes the options object (NOT the settings object which exposes a setter).
+Here is our browserify-settings module for example, for AngularJS:
+```javascript
+const path = require('path');
+const babelify = require('babelify');
+const browserifyNgAnnotate = require('browserify-ngannotate');
+
+module.exports = function(options) {
+    options.basedir = path.join(__dirname, '../app/src/client');
+    options.extensions = ['.tpl.html'];
+    options.transform = [require(path.join(__dirname, '../template-transform')), babelify.configure({only: /.es6\.js/}), browserifyNgAnnotate];
+};
+```
+
 
 <img src="http://i.imgur.com/6cyfaYS.png" align="right" />
 
