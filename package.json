@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "browserify": "^16.0.0",
-    "ms": "^2.1.1",
+    "ms": "^2.1.2",
     "prepare-response": "^2.1.1",
     "promise": "^8.0.2",
     "uglify-es": "^3.3.9",
