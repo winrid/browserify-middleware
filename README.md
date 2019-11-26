@@ -1,5 +1,8 @@
 # browserify-middleware
 ## With Some Concurrency!
+### IN ALPHA. DO NOT USE IN PRODUCTION.
+
+Currently, change detection is broken.
 
 This forked version of browserify-middleware uses a pool of workers for the change detection, browserify, and uglify steps.
 This improves performance by a significant amount since everything is no longer done in a single thread.
