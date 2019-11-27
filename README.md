@@ -1,13 +1,8 @@
 # browserify-middleware
 ## With Some Concurrency!
-### IN ALPHA. DO NOT USE IN PRODUCTION.
 
-Currently, change detection is broken.
-
-This forked version of browserify-middleware uses a pool of workers for the change detection, browserify, and uglify steps.
+This forked version of browserify-middleware uses separate threads for the change detection, browserify, and uglify steps.
 This improves performance by a significant amount since everything is no longer done in a single thread.
-
-The pool of workers is equal to the number of cpu cores on the system. 
 
 The API is exactly the same except that browserify.settings() no longer works. Instead it must be invoked from
 the worker by defining the path to a module that can set the settings for that worker.
