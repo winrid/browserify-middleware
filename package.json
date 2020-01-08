@@ -1,7 +1,7 @@
 {
-  "name": "browserify-middleware",
+  "name": "browserify-middleware-concurrent",
   "version": "8.1.1",
-  "description": "express middleware for browserify v2",
+  "description": "express middleware for browserify with some concurrency",
   "scripts": {
     "test": "mocha -R spec -t 7000 --exit",
     "test:perf": "mocha -R spec -t 7000 --exit",
